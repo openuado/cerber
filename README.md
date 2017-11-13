@@ -36,3 +36,11 @@ Or save output to json file
 ```sh
 $ python bouncer docker run hello-world > seccomp.json # save output inside seccomp.json file
 ```
+
+## Further reading
+- [docker seccomp json format](https://antitree.com/2017/09/docker-seccomp-json-format/)
+
+
+## Contributors
+- [Hervé Beraud (4383)](https://github.com/4383)
+- [Sébastien Boyron (dj4ngo)](https://github.com/dj4ngo)
