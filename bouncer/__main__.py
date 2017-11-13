@@ -4,7 +4,7 @@ import sys
 from subprocess import Popen
 from tempfile import NamedTemporaryFile
 OUTFILE = 'seccomp_profile.json'
-
+STRACEFILE = 'strace_statistics' 
 def trace(command):
 
     tmpfile = NamedTemporaryFile()
@@ -76,6 +76,10 @@ def main():
 
     with open(OUTFILE, 'w') as f:
         f.write(jsonify(seccomp))
+    f.close
+
+    with open(STRACEFILE, 'w') as f:
+        f.write(raw_syscalls)
     f.close
 
 
