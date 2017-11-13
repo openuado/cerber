@@ -1,15 +1,26 @@
 #!/usr/bin/python
 import json
 import sys
-from subprocess import Popen, PIPE
-
+from subprocess import Popen
+from tempfile import NamedTemporaryFile
 
 def trace(command):
-    cmd = ['strace', '-c']
+
+    global tempfile
+    tempfile = NamedTemporaryFile()
+
+    cmd = ['strace', '-c', '-o']
+    cmd.append(tempfile.name)
+    cmd.append('--')
     cmd.extend(command)
-    process = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE)
-    output, err = process.communicate()
-    return err.decode()
+
+    Popen(cmd).wait()
+
+    tempfile.seek(0)
+    strace = tempfile.read()
+    tempfile.close()
+
+    return strace
 
 
 def extract(syscalls):
@@ -58,6 +69,7 @@ def jsonify(seccomp):
 
 
 def main():
+
     raw_syscalls = trace(sys.argv[1:])
     syscalls = extract(raw_syscalls)
     seccomp = generate_seccomp(syscalls)
