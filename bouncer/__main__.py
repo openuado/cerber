@@ -1,10 +1,12 @@
 #!/usr/bin/python
 import json
+import sys
 from subprocess import Popen, PIPE
 
 
-def trace():
-    cmd = ['strace', '-c', 'sleep', '10']
+def trace(command):
+    cmd = ['strace', '-c']
+    cmd.extend(command)
     process = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE)
     output, err = process.communicate()
     return err.decode()
@@ -56,7 +58,7 @@ def jsonify(seccomp):
 
 
 def main():
-    raw_syscalls = trace()
+    raw_syscalls = trace(sys.argv[1:])
     syscalls = extract(raw_syscalls)
     seccomp = generate_seccomp(syscalls)
     print(jsonify(seccomp))
