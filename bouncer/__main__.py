@@ -3,22 +3,22 @@ import json
 import sys
 from subprocess import Popen
 from tempfile import NamedTemporaryFile
+OUTFILE = 'seccomp_profile.json'
 
 def trace(command):
 
-    global tempfile
-    tempfile = NamedTemporaryFile()
+    tmpfile = NamedTemporaryFile()
 
     cmd = ['strace', '-c', '-o']
-    cmd.append(tempfile.name)
+    cmd.append(tmpfile.name)
     cmd.append('--')
     cmd.extend(command)
 
     Popen(cmd).wait()
 
-    tempfile.seek(0)
-    strace = tempfile.read()
-    tempfile.close()
+    tmpfile.seek(0)
+    strace = tmpfile.read()
+    tmpfile.close()
 
     return strace
 
@@ -73,7 +73,10 @@ def main():
     raw_syscalls = trace(sys.argv[1:])
     syscalls = extract(raw_syscalls)
     seccomp = generate_seccomp(syscalls)
-    print(jsonify(seccomp))
+
+    with open(OUTFILE, 'w') as f:
+        f.write(jsonify(seccomp))
+    f.close
 
 
 if __name__ == "__main__":
