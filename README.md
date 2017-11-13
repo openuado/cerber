@@ -3,7 +3,7 @@ A straightforward tool for generate seccomp json
 
 ## Usage
 ```sh
-$ python bouncer # display output on stdout
+$ python bouncer docker run hello-world # display output on stdout
 {
     "defaultAction": "SCMP_ACT_ERRNO", 
     "architecture": [
@@ -34,5 +34,5 @@ $ python bouncer # display output on stdout
 
 Or save output to json file
 ```sh
-$ python bouncer > seccomp.json # save output inside seccomp.json file
+$ python bouncer docker run hello-world > seccomp.json # save output inside seccomp.json file
 ```
