@@ -9,4 +9,12 @@ before_install:
 install:
     # The install requirements in travis virtualenv that will be cached
     - pip install tox-travis .[test]
-script: ls
+script: tox
+deploy:
+    provider: pypi
+    user: ground-sector
+    on:
+        tags: true
+    distributions: sdist bdist_wheel
+    password:
+        secure: EtJFmD6VYzmdWCpoVCXqbQpvv7YCTQ/lQAB7a0Jk+ZHYV+f8BZnojLUBr5Qu9xdoBjwUK1VGxzYmZea1EbbXu77iwtBxAMMXb9YjwywaptY+nTo7h+T7C4sc0gl9TheEPtY3KuXbzP5VT/DVHoy8gy7ICX0nRf3JGbu5/NRtbtdFrgO8RL12vsYJ9dWlOIq0uv6jQS04eLg1UyJjhcyCu5wVsNNCQfgOBTuY2ZMtWXYozPJg7BVlYuTmYfHr/als4PddP4GnZUbt/1UN/MTAUS61gUGmjqj+e/0Qrj0DLBYWwmiwwzCyPB7yvEksu3UZgkO4Eza7J1bt7fVp0zkC2+1tZekMUmBHcjIbVNyzHlJsTMOBOhLjwMq80It8t97/yCV05pti4CDRyCE8IGdyx6Qtlhxb3A2W6yzv19nEkHxOucWYiyiwdPXsEvT4shBGLttVNNL920A4Os3wu0lWQL7lIu5JSLa8KMvvMSRrwSO3GNU98ffg56qgZemSRtrSlqFeTGAqg/9WMEHtc2Vb8uYCNo/OogECh7JMJPY5Uu/rgh1LSZjdjlLVWu64PeDyGiTkrlMz9WpO6wJ16aREQRvXVsxHvvNH/XkCmxXBJTRkdbiF/BeDAwH9ScmmltqNfBd9XyHx66gnsFIku/eN9DalB2QPPUp7gR5mFKiSluM=

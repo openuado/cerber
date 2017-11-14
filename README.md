@@ -1,9 +1,16 @@
-# Bouncer
+# Cerber
 A straightforward tool for generate seccomp json
+
+## Install
+```sh
+$ git clone https://github.com/gr0und-s3ct0r/cerber
+$ cd cerber
+$ python setup.py install # cerber is now installed in your environment
+```
 
 ## Usage
 ```sh
-$ python bouncer docker run hello-world # display output on stdout
+$ cerber docker run hello-world # display output on stdout
 {
     "defaultAction": "SCMP_ACT_ERRNO", 
     "architecture": [
@@ -34,7 +41,15 @@ $ python bouncer docker run hello-world # display output on stdout
 
 Or save output to json file
 ```sh
-$ python bouncer docker run hello-world > seccomp.json # save output inside seccomp.json file
+$ cerber docker run hello-world > seccomp.json # save output inside seccomp.json file
+```
+
+## Contribute
+```sh
+$ git clone https://github.com/gr0und-s3ct0r/cerber
+$ cd cerber
+$ pipenv shell # generate a virtual environment
+$ python setup.py develop # cerber is now installed in your virtual environment on develop mode
 ```
 
 ## Further reading

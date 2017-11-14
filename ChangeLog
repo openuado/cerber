@@ -1,0 +1,13 @@
+CHANGES
+=======
+
+* keep strace statistics
+* add gitignore
+* rename tmpfile and create seccomp profile in a file
+* do not touch stdout and stderr to be transparent on execution
+* further reading and contributors
+* update doc with command
+* pass command to execute to bouncer
+* improve usage
+* rename tool
+* initialize repository
