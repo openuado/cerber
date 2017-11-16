@@ -9,6 +9,7 @@ Install
 
     $ git clone https://github.com/gr0und-s3ct0r/cerber
     $ cd cerber
+    $ pip install pbr
     $ python setup.py install # cerber is now installed in your environment
 
 Usage
