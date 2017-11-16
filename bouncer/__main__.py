@@ -1,15 +1,26 @@
 #!/usr/bin/python
 import json
 import sys
-from subprocess import Popen, PIPE
-
-
+from subprocess import Popen
+from tempfile import NamedTemporaryFile
+OUTFILE = 'seccomp_profile.json'
+STRACEFILE = 'strace_statistics' 
 def trace(command):
-    cmd = ['strace', '-c']
+
+    tmpfile = NamedTemporaryFile()
+
+    cmd = ['strace', '-c', '-o']
+    cmd.append(tmpfile.name)
+    cmd.append('--')
     cmd.extend(command)
-    process = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE)
-    output, err = process.communicate()
-    return err.decode()
+
+    Popen(cmd).wait()
+
+    tmpfile.seek(0)
+    strace = tmpfile.read()
+    tmpfile.close()
+
+    return strace
 
 
 def extract(syscalls):
@@ -58,10 +69,18 @@ def jsonify(seccomp):
 
 
 def main():
+
     raw_syscalls = trace(sys.argv[1:])
     syscalls = extract(raw_syscalls)
     seccomp = generate_seccomp(syscalls)
-    print(jsonify(seccomp))
+
+    with open(OUTFILE, 'w') as f:
+        f.write(jsonify(seccomp))
+    f.close
+
+    with open(STRACEFILE, 'w') as f:
+        f.write(raw_syscalls)
+    f.close
 
 
 if __name__ == "__main__":
