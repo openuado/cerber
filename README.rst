@@ -53,8 +53,12 @@ Contribute
 
     $ git clone https://github.com/gr0und-s3ct0r/cerber
     $ cd cerber
+    $ pipenv install pbr
     $ pipenv shell # generate a virtual environment
-    $ python setup.py develop # cerber is now installed in your virtual environment on develop mode
+    $ python setup.py develop # install cerber in development mode
+    $ pip install -e .[test] # install testing dependencies
+    $ # make your changes
+    $ tox
 
 Further readings
 ================

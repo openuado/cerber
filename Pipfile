@@ -11,3 +11,4 @@ url = "https://pypi.python.org/simple"
 
 [packages]
 
+pbr = "*"
