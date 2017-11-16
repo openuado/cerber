@@ -15,7 +15,10 @@ Usage
 =====
 .. code:: shell
 
-    $ cerber docker run hello-world # display output on stdout
+    $ cerber docker run hello-world # a seccomp.json was created in the current directory
+    $ ls
+    seccomp.json
+    $ cat seccomp.json
     {
         "defaultAction": "SCMP_ACT_ERRNO", 
         "architecture": [
@@ -43,12 +46,6 @@ Usage
         ]
     }
 
-Or save output to json file
-
-.. code:: shell
-
-    $ cerber docker run hello-world > seccomp.json # save output inside seccomp.json file
-
 Contribute
 ==========
 
@@ -59,8 +56,8 @@ Contribute
     $ pipenv shell # generate a virtual environment
     $ python setup.py develop # cerber is now installed in your virtual environment on develop mode
 
-Further reading
-===============
+Further readings
+================
 - `docker seccomp json format <https://antitree.com/2017/09/docker-seccomp-json-format/>`_
 
 
