@@ -16,10 +16,10 @@ Usage
 =====
 .. code:: shell
 
-    $ cerber docker run hello-world # a seccomp.json was created in the current directory
+    $ cerber docker run hello-world # a seccomp_profil.json was created in the current directory
     $ ls
-    seccomp.json
-    $ cat seccomp.json
+    seccomp_profil.json
+    $ cat seccomp_profil.json
     {
         "defaultAction": "SCMP_ACT_ERRNO", 
         "architecture": [
