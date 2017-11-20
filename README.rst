@@ -4,6 +4,8 @@ Cerber
 
 .. image:: https://travis-ci.org/gr0und-s3ct0r/cerber.svg?branch=devel
        :target: https://travis-ci.org/gr0und-s3ct0r/cerber
+.. image:: https://badge.fury.io/py/cerber.svg
+       :target: https://badge.fury.io/py/cerber
 
 A straightforward command line tool for generate seccomp json profile
 
@@ -32,10 +34,7 @@ Install
 =======
 .. code:: shell
 
-    $ git clone https://github.com/gr0und-s3ct0r/cerber
-    $ cd cerber
-    $ pip install pbr
-    $ python setup.py install # cerber is now installed in your environment
+    $ pip install cerber
 
 Usage
 =====
