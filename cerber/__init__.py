@@ -6,7 +6,7 @@ from tempfile import NamedTemporaryFile
 
 
 OUTFILE = 'seccomp_profile.json'
-STRACEFILE = 'strace_statistics' 
+STRACEFILE = 'strace_statistics'
 
 
 def trace(command):
