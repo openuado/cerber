@@ -7,3 +7,4 @@ cerber.egg-info/
 build/
 
 .tox/
+*.pyc
