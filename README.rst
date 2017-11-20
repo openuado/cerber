@@ -47,6 +47,28 @@ Usage
         ]
     }
 
+and now you can assign this security profil to your container at run:
+
+.. code:: shell
+
+    $ docker run \
+    --rm \
+    --security-opt="no-new-privileges" \
+    --security-opt seccomp=seccomp_profile.json \
+    hello-world # you can get the following output for docker hello world
+
+    Hello from Docker!
+    This message shows that your installation appears to be working correctly.
+
+    To generate this message, Docker took the following steps:
+    1. The Docker client contacted the Docker daemon.
+    ...
+    For more examples and ideas, visit:
+     https://docs.docker.com/engine/userguide/
+
+
+
+
 Contribute
 ==========
 
