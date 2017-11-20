@@ -1,6 +1,23 @@
 CHANGES
 =======
 
+0.1.0
+-----
+
+* adding build badge
+* fix pep8 errors
+* ignore pyc
+* fix pep8 errors
+* adding overview about seccomp
+* adding further readings
+* example on how to use security profil
+* fix filename output on documentation
+* fix install
+* fix contribute guide
+* update usage with seccomp.json file generated
+* use restructuredText for readme instead of markdown
+* packaging + TU + CI
+* introduce CI
 * keep strace statistics
 * add gitignore
 * rename tmpfile and create seccomp profile in a file
