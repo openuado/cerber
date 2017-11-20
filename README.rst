@@ -1,7 +1,28 @@
 ======
 Cerber
 ======
-A straightforward command line tool for generate seccomp json file
+A straightforward command line tool for generate seccomp json profile
+
+Overview
+========
+Seccomp (short for secure computing mode) is a computer security 
+facility in the Linux kernel.
+Seccomp allows a process to make a one-way transition into a "secure"
+state where it cannot make any system calls except exit(),
+sigreturn(), read() and write() to already-open file descriptors.
+Should it attempt any other system calls, the kernel will terminate
+the process with SIGKILL or SIGSYS.
+In this sense, it does not virtualize the system's resources but isolates 
+the process from them entirely.
+
+Generated seccomp profile can be use with a lot of applications like:
+
+- docker
+- firefox
+- systemd
+- openssh
+- chrome
+- and more...
 
 Install
 =======
