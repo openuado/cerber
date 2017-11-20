@@ -66,9 +66,6 @@ and now you can assign this security profil to your container at run:
     For more examples and ideas, visit:
      https://docs.docker.com/engine/userguide/
 
-
-
-
 Contribute
 ==========
 
@@ -85,8 +82,9 @@ Contribute
 
 Further readings
 ================
+- `docker security seccomp documentation <https://docs.docker.com/engine/security/seccomp/#pass-a-profile-for-a-container>`_
 - `docker seccomp json format <https://antitree.com/2017/09/docker-seccomp-json-format/>`_
-
+- `docker no new privileges security flag <https://www.projectatomic.io/blog/2016/03/no-new-privs-docker/>`_
 
 Authors
 =======
