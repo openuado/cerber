@@ -1,6 +1,10 @@
 ======
 Cerber
 ======
+
+.. image:: https://travis-ci.org/gr0und-s3ct0r/cerber.svg?branch=devel
+       :target: https://travis-ci.org/gr0und-s3ct0r/cerber
+
 A straightforward command line tool for generate seccomp json profile
 
 Overview
