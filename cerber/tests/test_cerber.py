@@ -1,5 +1,6 @@
-import unittest
 import textwrap
+import unittest
+
 import cerber
 
 
