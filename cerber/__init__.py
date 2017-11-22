@@ -2,9 +2,9 @@
 import distutils.spawn
 import json
 import sys
+import textwrap
 from subprocess import Popen
 from tempfile import NamedTemporaryFile
-import textwrap
 
 
 OUTFILE = 'seccomp_profile.json'
