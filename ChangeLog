@@ -1,6 +1,13 @@
 CHANGES
 =======
 
+0.3.0
+-----
+
+* check if strace is installed
+* update changelog for 0.2.0
+* ignore python dist
+
 0.2.0
 -----
 

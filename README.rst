@@ -21,7 +21,7 @@ the process with SIGKILL or SIGSYS.
 In this sense, it does not virtualize the system's resources but isolates 
 the process from them entirely.
 
-Generated seccomp profile can be use with a lot of applications like:
+Seccomp profile is used with by a lot of applications like:
 
 - docker
 - firefox
@@ -29,6 +29,16 @@ Generated seccomp profile can be use with a lot of applications like:
 - openssh
 - chrome
 - and more...
+
+Cerber help you to generate seccomp profile that you can
+use with docker per example.
+
+Prerequisites
+=============
+
+- Linux
+- Python3.5+
+- Strace
 
 Install
 =======
@@ -38,12 +48,15 @@ Install
 
 Usage
 =====
+
+Generate a seccomp_profile.json in your current directory:
+
 .. code:: shell
 
-    $ cerber docker run hello-world # a seccomp_profil.json was created in the current directory
+    $ cerber docker run hello-world
     $ ls
-    seccomp_profil.json
-    $ cat seccomp_profil.json
+    seccomp_profile.json
+    $ cat seccomp_profile.json
     {
         "defaultAction": "SCMP_ACT_ERRNO", 
         "architecture": [
@@ -71,7 +84,7 @@ Usage
         ]
     }
 
-and now you can assign this security profil to your container at run:
+Now you can assign this seccomp profile to your container at run:
 
 .. code:: shell
 
@@ -89,6 +102,15 @@ and now you can assign this security profil to your container at run:
     ...
     For more examples and ideas, visit:
      https://docs.docker.com/engine/userguide/
+
+Becareful to generate seccomp profile with cerber on the same cpu architecture
+that your production environment (where you want run your container).
+
+Features
+========
+
+- detect syscalls
+- generate seccomp profile from detected syscalls
 
 Contribute
 ==========
@@ -110,7 +132,7 @@ Further readings
 - `docker seccomp json format <https://antitree.com/2017/09/docker-seccomp-json-format/>`_
 - `docker no new privileges security flag <https://www.projectatomic.io/blog/2016/03/no-new-privs-docker/>`_
 
-Authors
-=======
+Original Authors
+================
 - `Sébastien Boyron (dj4ngo) <https://github.com/dj4ngo>`_
 - `Hervé Beraud (4383) <https://github.com/4383>`_

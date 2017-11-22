@@ -1,12 +1,24 @@
 #!/usr/bin/python
+import distutils.spawn
 import json
 import sys
 from subprocess import Popen
 from tempfile import NamedTemporaryFile
+import textwrap
 
 
 OUTFILE = 'seccomp_profile.json'
 STRACEFILE = 'strace_statistics'
+
+
+def strace_cmd_available():
+    if not distutils.spawn.find_executable('strace'):
+        print(textwrap.dedent('''
+            System error! strace need to be installed\n
+            Please install strace\n
+            Execution aborted\n
+        '''))
+        sys.exit(1)
 
 
 def trace(command):
@@ -68,15 +80,16 @@ def jsonify(seccomp):
 
 
 def main():
+    strace_cmd_available()
     raw_syscalls = trace(sys.argv[1:])
     syscalls = extract(raw_syscalls)
     seccomp = generate_seccomp(syscalls)
-    with open(OUTFILE, 'w') as f:
+
+    with open(OUTFILE, 'w+') as f:
         f.write(jsonify(seccomp))
-    f.close
-    with open(STRACEFILE, 'w') as f:
+
+    with open(STRACEFILE, 'w+') as f:
         f.write(raw_syscalls)
-    f.close
 
 
 if __name__ == "__main__":
